@@ -8,7 +8,7 @@ plugins {
 kotlin {
     @Suppress("OPT_IN_USAGE")
     wasm {
-        moduleName = "jetsnackwasmapp"
+        moduleName = "jamshedalamqaderi-portfolio"
         browser {
             commonWebpackConfig {
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).copy(

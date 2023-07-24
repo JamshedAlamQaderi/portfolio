@@ -1,4 +1,4 @@
-import { instantiate } from './jetsnackwasmapp.uninstantiated.mjs';
+import { instantiate } from './jamshedalamqaderi-portfolio.uninstantiated.mjs';
 
 await wasmSetup;
 
