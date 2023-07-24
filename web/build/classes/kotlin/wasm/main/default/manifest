@@ -1,9 +1,0 @@
-builtins_platform=WASM
-unique_name=portfolio\:web
-compiler_version=1.9.0
-depends=org.jetbrains.compose.material\:material org.jetbrains.compose.material\:material-ripple org.jetbrains.compose.foundation\:foundation org.jetbrains.compose.animation\:animation org.jetbrains.compose.material\:material-icons-core org.jetbrains.compose.foundation\:foundation-layout org.jetbrains.compose.ui\:ui org.jetbrains.compose.runtime\:runtime-saveable org.jetbrains.compose.ui\:ui-text org.jetbrains.compose.ui\:ui-graphics org.jetbrains.skiko\:skiko org.jetbrains.compose.animation\:animation-core org.jetbrains.kotlinx\:kotlinx-coroutines-core kotlin org.jetbrains.compose.runtime\:runtime org.jetbrains.compose.ui\:ui-unit org.jetbrains.compose.ui\:ui-geometry
-serializedKlibFingerprint=1z9wyg2e8c7wh.31lw8ytu1bd5c
-serializedIrFileFingerprints=bqtpf50ijxzo.2jf1st5rzrbel
-jsOutputName=jamshedalamqaderi-portfolio
-abi_version=1.8.0
-metadata_version=1.4.1

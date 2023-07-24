@@ -12,7 +12,7 @@ import androidx.compose.ui.window.CanvasBasedWindow
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    CanvasBasedWindow("JetSnack", canvasElementId = "portfolio-canvas") {
+    CanvasBasedWindow("JetSnack", canvasElementId = "jetsnackCanvas") {
         Scaffold {
             Row(
                 modifier = Modifier.fillMaxSize(),

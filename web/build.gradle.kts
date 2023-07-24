@@ -6,8 +6,9 @@ plugins {
 }
 
 kotlin {
+    @Suppress("OPT_IN_USAGE")
     wasm {
-        moduleName = "jamshedalamqaderi-portfolio"
+        moduleName = "jetsnackwasmapp"
         browser {
             commonWebpackConfig {
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).copy(
@@ -20,6 +21,7 @@ kotlin {
                     static = (devServer?.static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
                         add(project.rootDir.path)
+                        add(project.rootDir.path + "/common/")
                     },
                 )
             }
