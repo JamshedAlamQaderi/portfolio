@@ -7,18 +7,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.window.CanvasBasedWindow
-import com.jamshedalamqaderi.portfolio.ui.theme.PortfolioTheme
+import com.jamshedalamqaderi.portfolio.presentation.ui.theme.PortfolioTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
     CanvasBasedWindow("Jamshed Alam Qaderi - Portfolio", canvasElementId = "portfolio-canvas") {
         PortfolioTheme {
             Scaffold {
-                Column (
+                Column(
                     modifier = Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.SpaceBetween
                 ) {

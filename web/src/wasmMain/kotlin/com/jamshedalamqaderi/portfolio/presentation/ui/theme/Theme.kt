@@ -1,4 +1,4 @@
-package com.jamshedalamqaderi.portfolio.ui.theme
+package com.jamshedalamqaderi.portfolio.presentation.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

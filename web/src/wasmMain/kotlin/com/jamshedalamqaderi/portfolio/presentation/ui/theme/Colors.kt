@@ -1,4 +1,4 @@
-package com.jamshedalamqaderi.portfolio.ui.theme
+package com.jamshedalamqaderi.portfolio.presentation.ui.theme
 
 import androidx.compose.material.darkColors
 import androidx.compose.material.lightColors
