@@ -19,7 +19,7 @@ fun main() {
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("Hello, World")
+                Text("Hello, Compose Web")
             }
         }
     }
