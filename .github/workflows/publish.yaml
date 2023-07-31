@@ -1,7 +1,7 @@
 name: 'Deploy To Github Pages'
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -27,8 +27,8 @@ jobs:
           check-latest: true
           cache: 'gradle'
       - name: Packaging 📦
-        run: ./gradlew :web:bundlePortfolio --no-daemon
+        run: ./gradlew :web:bundleWebApp --no-daemon
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./web/build/dist/wasm/productionExecutable
+          folder: ./web/build/dist/js/productionExecutable

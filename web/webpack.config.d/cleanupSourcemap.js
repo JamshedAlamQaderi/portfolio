@@ -7,6 +7,7 @@
     const outDir = __dirname + "/kotlin/"
     const projecName = path.basename(__dirname);
     const mapFile = outDir + projecName + ".js.map"
+
     const sourcemap = JSON.parse(fs.readFileSync(mapFile))
     const sources = sourcemap["sources"]
     srcLoop: for (let i in sources) {
