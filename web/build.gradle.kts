@@ -10,7 +10,7 @@ kotlin {
     wasm {
         moduleName = "jamshedalamqaderi-portfolio"
         browser {
-            commonWebpackConfig {
+            commonWebpackConfig(Action {
                 devServer = (devServer ?: KotlinWebpackConfig.DevServer()).copy(
 //                    open = mapOf(
 //                        "app" to mapOf(
@@ -25,7 +25,7 @@ kotlin {
                         add(project.rootDir.path + "/web/")
                     },
                 )
-            }
+            })
         }
         binaries.executable()
     }
@@ -54,4 +54,14 @@ compose {
     kotlinCompilerPlugin.set(composeVersion)
     val kotlinVersion = project.property("kotlin.version") as String
     kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=$kotlinVersion")
+}
+
+tasks.register<Copy>("copyMjsFile") {
+    mustRunAfter("wasmBrowserDistribution")
+    from("$buildDir/compileSync/wasm/main/productionExecutable/kotlin/jamshedalamqaderi-portfolio.uninstantiated.mjs")
+    into("$buildDir/dist/wasm/productionExecutable")
+}
+
+tasks.register("bundlePortfolio") {
+    dependsOn("wasmBrowserDistribution", "copyMjsFile")
 }
