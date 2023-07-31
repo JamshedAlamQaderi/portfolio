@@ -24,6 +24,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           check-latest: true
+          cache: 'gradle'
       - name: Packaging 📦
         run: ./gradlew :web:bundlePortfolio --no-daemon
       - name: Deploy 🚀
