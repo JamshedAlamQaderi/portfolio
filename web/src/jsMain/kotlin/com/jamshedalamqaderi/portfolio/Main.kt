@@ -25,7 +25,12 @@ fun main() {
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Text(
-                        "Hi there, I'm Jamshed Alam Qaderi",
+                        "Hi there,",
+                        style = androidx.compose.material3.MaterialTheme.typography.headlineLarge
+                    )
+                    Spacer(Modifier.height(10.dp))
+                    Text(
+                        "Jamshed Alam Qaderi",
                         style = androidx.compose.material3.MaterialTheme.typography.headlineLarge
                     )
                     Spacer(Modifier.height(10.dp))
