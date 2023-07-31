@@ -30,7 +30,7 @@ fun main() {
                     )
                     Spacer(Modifier.height(10.dp))
                     Text(
-                        "Jamshed Alam Qaderi",
+                        "I'm Jamshed Alam Qaderi",
                         style = androidx.compose.material3.MaterialTheme.typography.headlineLarge
                     )
                     Spacer(Modifier.height(10.dp))
