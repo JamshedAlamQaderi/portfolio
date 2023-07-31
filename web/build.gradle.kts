@@ -6,6 +6,11 @@ plugins {
 }
 
 kotlin {
+    js(IR) {
+        moduleName = "jamshedalamqaderi-portfolio"
+        browser()
+        binaries.executable()
+    }
     @Suppress("OPT_IN_USAGE")
     wasm {
         moduleName = "jamshedalamqaderi-portfolio"
