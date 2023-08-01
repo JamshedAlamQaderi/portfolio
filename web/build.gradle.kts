@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
@@ -6,7 +8,13 @@ plugins {
 kotlin {
     js(IR) {
         moduleName = "jamshedalamqaderi-portfolio"
-        browser()
+        browser{
+            commonWebpackConfig(Action{
+                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).copy(
+
+                )
+            })
+        }
         binaries.executable()
     }
 
@@ -21,6 +29,7 @@ kotlin {
                 implementation(compose.material3)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation(project(":web-router"))
             }
         }
     }
@@ -28,11 +37,6 @@ kotlin {
 
 compose.experimental {
     web.application {}
-}
-
-compose {
-    val kotlinVersion = project.property("kotlin.version") as String
-    kotlinCompilerPluginArgs.add("suppressKotlinVersionCompatibilityCheck=$kotlinVersion")
 }
 
 tasks.register<Copy>("copyJsFile") {

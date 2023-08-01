@@ -1,4 +1,4 @@
-// Replace paths unavailable during compilation with `null`, so they will not be shown in devtools
+// Redirect all path to the index.html file
 ;
 (() => {
     const fs = require("fs");
