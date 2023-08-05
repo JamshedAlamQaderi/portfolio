@@ -1,8 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="web-router-js">
     <output-path>$PROJECT_DIR$/web-router/build/libs</output-path>
-    <root id="archive" name="web-router-js.jar">
-      <element id="module-output" name="portfolio.web-router.jsMain" />
-    </root>
+    <root id="archive" name="web-router-js.jar" />
   </artifact>
 </component>
