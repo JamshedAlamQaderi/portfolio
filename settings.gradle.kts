@@ -13,4 +13,4 @@ pluginManagement {
     }
 }
 rootProject.name = "portfolio"
-include(":web")
+include("web-router",":web")

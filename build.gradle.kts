@@ -11,6 +11,7 @@ allprojects {
 
     configurations.all {
         val conf = this
+        // Currently it's necessary to make the android build work properly
         conf.resolutionStrategy.eachDependency {
             val isWasm = conf.name.contains("wasm", true)
             val isJs = conf.name.contains("js", true)
