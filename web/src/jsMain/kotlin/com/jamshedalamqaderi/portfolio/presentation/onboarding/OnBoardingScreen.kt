@@ -1,4 +1,4 @@
-package com.jamshedalamqaderi.portfolio.presentation.pages
+package com.jamshedalamqaderi.portfolio.presentation.onboarding
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -13,17 +13,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
+import com.jamshedalamqaderi.portfolio.domain.services.navigation.NavigationService
+import com.jamshedalamqaderi.portfolio.domain.setup.NavigationRouter
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
 import com.jamshedalamqaderi.portfolio.presentation.PortfolioScaffold
-import com.jamshedalamqaderi.portfolio.presentation.components.utils.animatedTextTying
-import com.jamshedalamqaderi.webrouter.context.Context
+import com.jamshedalamqaderi.portfolio.presentation.common.utils.animatedTextTying
 import kotlinx.coroutines.delay
+import org.koin.compose.koinInject
 
 @Composable
-fun OnBoarding(context: Context) {
+fun OnBoardingScreen(navigationService: NavigationService = koinInject()) {
     LaunchedEffect(Unit) {
         delay(7_000)
-        context.navigate("/landing")
+        navigationService.push(NavigationRouter.Landing)
     }
     PortfolioScaffold {
         Box(

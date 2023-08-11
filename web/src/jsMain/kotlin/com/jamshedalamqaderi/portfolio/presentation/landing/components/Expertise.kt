@@ -1,4 +1,4 @@
-package com.jamshedalamqaderi.portfolio.presentation.components.landing
+package com.jamshedalamqaderi.portfolio.presentation.landing.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

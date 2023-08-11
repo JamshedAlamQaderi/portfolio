@@ -1,4 +1,4 @@
-package com.jamshedalamqaderi.portfolio.presentation.components.utils
+package com.jamshedalamqaderi.portfolio.presentation.common.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect

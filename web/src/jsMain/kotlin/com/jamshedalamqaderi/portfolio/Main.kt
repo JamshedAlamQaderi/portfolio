@@ -1,24 +1,94 @@
 package com.jamshedalamqaderi.portfolio
 
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import com.jamshedalamqaderi.portfolio.domain.utils.FontLoader
-import com.jamshedalamqaderi.portfolio.presentation.pages.Landing
-import com.jamshedalamqaderi.portfolio.presentation.pages.OnBoarding
-import com.jamshedalamqaderi.portfolio.presentation.ui.theme.PortfolioTheme
-import com.jamshedalamqaderi.webrouter.dsl.WebRouterWindow
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.window.CanvasBasedWindow
+import com.arkivanov.decompose.DefaultComponentContext
+import com.arkivanov.decompose.ExperimentalDecomposeApi
+import com.arkivanov.decompose.extensions.compose.jetbrains.stack.Children
+import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.fade
+import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.plus
+import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.scale
+import com.arkivanov.decompose.extensions.compose.jetbrains.stack.animation.stackAnimation
+import com.arkivanov.decompose.router.stack.webhistory.DefaultWebHistoryController
+import com.arkivanov.essenty.lifecycle.LifecycleRegistry
+import com.arkivanov.essenty.lifecycle.resume
+import com.arkivanov.essenty.lifecycle.stop
+import com.jamshedalamqaderi.portfolio.domain.services.navigation.DeepLink
+import com.jamshedalamqaderi.portfolio.domain.services.navigation.NavigationManagerService
+import com.jamshedalamqaderi.portfolio.domain.services.navigation.NavigationManagerServiceImpl
+import com.jamshedalamqaderi.portfolio.domain.services.navigation.NavigationService
+import com.jamshedalamqaderi.portfolio.domain.setup.KoinModule
+import com.jamshedalamqaderi.portfolio.domain.setup.Routes
+import com.jamshedalamqaderi.portfolio.presentation.PortfolioScaffold
+import com.jamshedalamqaderi.portfolio.presentation.common.components.Center
+import kotlinx.browser.document
+import kotlinx.browser.window
 import org.jetbrains.skiko.wasm.onWasmReady
+import org.koin.compose.KoinApplication
+import org.koin.dsl.module
 
+@OptIn(ExperimentalDecomposeApi::class, ExperimentalComposeUiApi::class)
 fun main() {
+    val lifecycleRegistry = LifecycleRegistry()
+    val navigationManagerService = NavigationManagerServiceImpl(
+        componentContext = DefaultComponentContext(lifecycle = lifecycleRegistry),
+        deepLink = DeepLink.Web(path = window.location.pathname),
+        webHistoryController = DefaultWebHistoryController(),
+        routeList = Routes
+    )
+    lifecycleRegistry.attachToDocument()
+
     onWasmReady {
-        WebRouterWindow {
-            routeView("/") { context ->
-                OnBoarding(context)
+        CanvasBasedWindow("JamshedAlamQaderi-Portfolio") {
+            BootstrapApp(navigationManagerService)
+        }
+    }
+}
+
+@Composable
+fun BootstrapApp(navigationManagerService: NavigationManagerService) {
+    KoinApplication(application = {
+        modules(
+            KoinModule,
+            module {
+                single<NavigationService> { navigationManagerService }
             }
-            routeView("/landing") {
-                Landing()
+        )
+    }) {
+        PortfolioScaffold(modifier = Modifier.fillMaxSize()) {
+            Children(
+                navigationManagerService.stack,
+                modifier = Modifier.fillMaxSize(),
+                animation = stackAnimation(fade() + scale()),
+            ) {
+                navigationManagerService
+                    .findRouteByNavigationRouter(it.instance)
+                    ?.content?.invoke(it.instance)
+                    ?: Center {
+                        Text("Screen not found for path: ${it.instance.path}")
+                    }
             }
         }
     }
+}
+
+private fun LifecycleRegistry.attachToDocument() {
+    fun onVisibilityChanged() {
+        if (js("document.visibilityState") == "visible") {
+            resume()
+        } else {
+            stop()
+        }
+    }
+
+    onVisibilityChanged()
+
+    document.addEventListener(
+        type = "visibilitychange",
+        callback = { onVisibilityChanged() }
+    )
 }

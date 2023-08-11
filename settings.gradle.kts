@@ -4,13 +4,20 @@ pluginManagement {
         gradlePluginPortal()
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
     }
 
     plugins {
-        kotlin("multiplatform").version(extra["kotlin.version"] as String)
-        id("org.jetbrains.compose").version(extra["compose.wasm.version"] as String)
+        val kotlinVersion = extra["kotlin.version"] as String
+        val composeVersion = extra["compose.version"] as String
+        val ktlintVersion = extra["ktlintVersion"] as String
+        val buildKonfigVersion = extra["buildKonfigVersion"] as String
+
+        kotlin("multiplatform").version(kotlinVersion)
+        kotlin("plugin.serialization").version(kotlinVersion)
+        id("org.jetbrains.compose").version(composeVersion)
+        id("org.jlleitschuh.gradle.ktlint").version(ktlintVersion)
+        id("com.codingfeline.buildkonfig").version(buildKonfigVersion)
     }
 }
 rootProject.name = "portfolio"
-include("web-router",":web")
+include(":web")

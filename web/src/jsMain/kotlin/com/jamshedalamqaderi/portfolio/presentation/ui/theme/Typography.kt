@@ -1,6 +1,5 @@
 package com.jamshedalamqaderi.portfolio.presentation.ui.theme
 
-
 import androidx.compose.material3.Typography
 import com.jamshedalamqaderi.portfolio.domain.utils.FontLoader
 

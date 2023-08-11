@@ -1,6 +1,5 @@
-package com.jamshedalamqaderi.portfolio.presentation.components.landing
+package com.jamshedalamqaderi.portfolio.presentation.landing.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -19,29 +17,22 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
-import com.jamshedalamqaderi.portfolio.domain.utils.toImageBitmap
 import org.jetbrains.compose.resources.ExperimentalResourceApi
+import org.jetbrains.compose.resources.orEmpty
+import org.jetbrains.compose.resources.rememberImageBitmap
 import org.jetbrains.compose.resources.resource
 
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun LandingIntro() {
-    val landingIntroProfileImage = remember { mutableStateOf<ImageBitmap?>(null) }
-    LaunchedEffect(Unit) {
-        landingIntroProfileImage.value =
-            resource("images/my_picture.png").readBytes().toImageBitmap()
-    }
-    if (landingIntroProfileImage.value == null) return
+    val profilePicState = resource("images/my_picture.png").rememberImageBitmap()
+
     Row(
         modifier = Modifier
             .fillMaxSize()
@@ -56,7 +47,7 @@ fun LandingIntro() {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center
     ) {
-        PortfolioImage(landingIntroProfileImage.value!!)
+        PortfolioImage(profilePicState.orEmpty())
         Spacer(modifier = Modifier.width(50.dp))
         Column(
             modifier = Modifier

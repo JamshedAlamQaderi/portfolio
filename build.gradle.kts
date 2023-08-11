@@ -1,35 +1,22 @@
-group = "com.jamshedalamqaderi.portfolio"
-version = "1.0-SNAPSHOT"
+plugins {
+    kotlin("multiplatform") apply false
+    kotlin("plugin.serialization") apply false
+    id("org.jetbrains.compose") apply false
+    id("org.jlleitschuh.gradle.ktlint") apply false
+    id("com.codingfeline.buildkonfig") apply false
+}
 
 allprojects {
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
     repositories {
         google()
         mavenCentral()
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-        maven("https://maven.pkg.jetbrains.space/kotlin/p/wasm/experimental")
-    }
-
-    configurations.all {
-        val conf = this
-        // Currently it's necessary to make the android build work properly
-        conf.resolutionStrategy.eachDependency {
-            val isWasm = conf.name.contains("wasm", true)
-            val isJs = conf.name.contains("js", true)
-            val isComposeGroup = requested.module.group.startsWith("org.jetbrains.compose")
-            val isComposeCompiler = requested.module.group.startsWith("org.jetbrains.compose.compiler")
-            if (isComposeGroup && !isComposeCompiler && !isWasm && !isJs) {
-                val composeVersion = project.property("compose.version") as String
-                useVersion(composeVersion)
-            }
-            if (requested.module.name.startsWith("kotlin-stdlib")) {
-                val kotlinVersion = project.property("kotlin.version") as String
-                useVersion(kotlinVersion)
-            }
-        }
     }
 }
 
-plugins {
-    kotlin("multiplatform") apply false
-    id("org.jetbrains.compose") apply false
+rootProject.plugins.withType<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin> {
+    rootProject.the<org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension>().download =
+        false
 }
