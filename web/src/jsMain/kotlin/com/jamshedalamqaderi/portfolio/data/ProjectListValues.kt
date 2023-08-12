@@ -1,4 +1,4 @@
-package com.jamshedalamqaderi.portfolio.domain.utils
+package com.jamshedalamqaderi.portfolio.data
 
 import com.jamshedalamqaderi.portfolio.presentation.landing.entities.ProjectListItemModel
 

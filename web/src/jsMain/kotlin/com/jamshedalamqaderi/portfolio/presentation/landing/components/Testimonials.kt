@@ -14,8 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
+import com.jamshedalamqaderi.portfolio.data.ClientReviewValues
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
-import com.jamshedalamqaderi.portfolio.domain.utils.ClientReviewValues
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -25,10 +25,6 @@ fun Testimonials() {
             .fillMaxWidth()
             .background(
                 Brush.horizontalGradient(
-//                    colors = listOf(
-//                        MaterialTheme.colorScheme.surfaceVariant,
-//                        MaterialTheme.colorScheme.inversePrimary,
-//                    )
                     colors = listOf(
                         MaterialTheme.colorScheme.surfaceVariant,
                         MaterialTheme.colorScheme.errorContainer,
@@ -44,11 +40,12 @@ fun Testimonials() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center,
             verticalArrangement = Arrangement.SpaceBetween,
-            maxItemsInEachRow = 4
+            maxItemsInEachRow = 3
         ) {
-            ClientReviewValues.forEach {clientReview->
+            ClientReviewValues.forEach { clientReview ->
                 ReviewCard(clientReview)
             }
         }
+        Spacer(Modifier.height(30.dp))
     }
 }

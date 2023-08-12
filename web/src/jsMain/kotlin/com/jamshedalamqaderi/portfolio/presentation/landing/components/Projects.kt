@@ -14,8 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
+import com.jamshedalamqaderi.portfolio.data.ProjectListValues
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
-import com.jamshedalamqaderi.portfolio.domain.utils.ProjectListValues
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -25,10 +25,6 @@ fun Projects() {
             .fillMaxWidth()
             .background(
                 Brush.horizontalGradient(
-//                    colors = listOf(
-//                        MaterialTheme.colorScheme.primaryContainer,
-//                        MaterialTheme.colorScheme.errorContainer,
-//                    )
                     colors = listOf(
                         MaterialTheme.colorScheme.secondaryContainer,
                         MaterialTheme.colorScheme.errorContainer,
@@ -50,5 +46,6 @@ fun Projects() {
                 ProjectCard(model)
             }
         }
+        Spacer(Modifier.height(30.dp))
     }
 }
