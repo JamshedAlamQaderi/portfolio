@@ -1,0 +1,48 @@
+package com.jamshedalamqaderi.portfolio.domain.utils
+
+import com.jamshedalamqaderi.portfolio.presentation.landing.entities.ProjectListItemModel
+
+val ProjectListValues = listOf(
+    ProjectListItemModel(
+        "Socialdroid",
+        "Great job! I appreciate theming, grouping things into sections. The only missing thing (for me of course) are the placeholders in the text fields.",
+        "images/my_picture.png",
+        tags = listOf("KOTLIN", "KMP", "ANDROID"),
+        link = ""
+    ),
+    ProjectListItemModel(
+        "Socialdroid",
+        "Great job! I appreciate theming, grouping things into sections. The only missing thing (for me of course) are the placeholders in the text fields.",
+        "images/my_picture.png",
+        tags = listOf("KOTLIN", "KMP", "ANDROID"),
+        link = ""
+    ),
+    ProjectListItemModel(
+        "Socialdroid",
+        "Great job! I appreciate theming, grouping things into sections. The only missing thing (for me of course) are the placeholders in the text fields.",
+        "images/my_picture.png",
+        tags = listOf("KOTLIN", "KMP", "ANDROID"),
+        link = ""
+    ),
+    ProjectListItemModel(
+        "Socialdroid",
+        "Great job! I appreciate theming, grouping things into sections. The only missing thing (for me of course) are the placeholders in the text fields.",
+        "images/my_picture.png",
+        tags = listOf("KOTLIN", "KMP", "ANDROID"),
+        link = ""
+    ),
+    ProjectListItemModel(
+        "Socialdroid",
+        "Great job! I appreciate theming, grouping things into sections. The only missing thing (for me of course) are the placeholders in the text fields.",
+        "images/my_picture.png",
+        tags = listOf("KOTLIN", "KMP", "ANDROID"),
+        link = ""
+    ),
+    ProjectListItemModel(
+        "Socialdroid",
+        "Great job! I appreciate theming, grouping things into sections. The only missing thing (for me of course) are the placeholders in the text fields.",
+        "images/my_picture.png",
+        tags = listOf("KOTLIN", "KMP", "ANDROID"),
+        link = ""
+    )
+)

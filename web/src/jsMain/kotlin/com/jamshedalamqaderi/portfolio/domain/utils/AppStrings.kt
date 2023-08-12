@@ -7,4 +7,8 @@ object AppStrings {
     const val jobTitle = "Full stack developer"
     const val introDescription =
         "I specialize in Kotlin Multiplatform development, and I excel in it."
+
+    const val VIEW_DETAILS = "View Details"
+    const val PROJECTS = "Projects"
+    const val TESTIMONIALS = "Testimonials"
 }

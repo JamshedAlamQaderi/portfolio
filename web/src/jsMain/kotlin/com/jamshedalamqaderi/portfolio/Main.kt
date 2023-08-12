@@ -1,10 +1,14 @@
 package com.jamshedalamqaderi.portfolio
 
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.CanvasBasedWindow
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.decompose.ExperimentalDecomposeApi
@@ -30,6 +34,14 @@ import kotlinx.browser.window
 import org.jetbrains.skiko.wasm.onWasmReady
 import org.koin.compose.KoinApplication
 import org.koin.dsl.module
+
+object ScreenConstraints {
+    val size = mutableStateOf(DpSize(0.dp, 0.dp))
+
+    fun update(size: DpSize) {
+        this.size.value = size
+    }
+}
 
 @OptIn(ExperimentalDecomposeApi::class, ExperimentalComposeUiApi::class)
 fun main() {
@@ -65,12 +77,15 @@ fun BootstrapApp(navigationManagerService: NavigationManagerService) {
                 modifier = Modifier.fillMaxSize(),
                 animation = stackAnimation(fade() + scale()),
             ) {
-                navigationManagerService
-                    .findRouteByNavigationRouter(it.instance)
-                    ?.content?.invoke(it.instance)
-                    ?: Center {
-                        Text("Screen not found for path: ${it.instance.path}")
-                    }
+                BoxWithConstraints {
+                    ScreenConstraints.update(DpSize(maxWidth, maxHeight))
+                    navigationManagerService
+                        .findRouteByNavigationRouter(it.instance)
+                        ?.content?.invoke(it.instance)
+                        ?: Center {
+                            Text("Screen not found for path: ${it.instance.path}")
+                        }
+                }
             }
         }
     }

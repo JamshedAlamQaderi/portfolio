@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -22,7 +21,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.jamshedalamqaderi.portfolio.ScreenConstraints
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
+import com.jamshedalamqaderi.portfolio.presentation.common.components.Center
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.orEmpty
 import org.jetbrains.compose.resources.rememberImageBitmap
@@ -31,11 +32,12 @@ import org.jetbrains.compose.resources.resource
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun LandingIntro() {
+    val screenSize = ScreenConstraints.size.value
     val profilePicState = resource("images/my_picture.png").rememberImageBitmap()
-
     Row(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
+            .height(screenSize.height)
             .background(
                 Brush.horizontalGradient(
                     colors = listOf(
