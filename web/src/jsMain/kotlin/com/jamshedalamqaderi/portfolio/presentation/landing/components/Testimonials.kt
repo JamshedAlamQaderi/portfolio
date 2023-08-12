@@ -15,8 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
-import com.jamshedalamqaderi.portfolio.domain.utils.ProjectListValues
-import com.jamshedalamqaderi.portfolio.presentation.common.components.Center
+import com.jamshedalamqaderi.portfolio.domain.utils.ClientReviewValues
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -26,16 +25,20 @@ fun Testimonials() {
             .fillMaxWidth()
             .background(
                 Brush.horizontalGradient(
+//                    colors = listOf(
+//                        MaterialTheme.colorScheme.surfaceVariant,
+//                        MaterialTheme.colorScheme.inversePrimary,
+//                    )
                     colors = listOf(
                         MaterialTheme.colorScheme.surfaceVariant,
-                        MaterialTheme.colorScheme.inversePrimary,
+                        MaterialTheme.colorScheme.errorContainer,
                     )
                 )
             )
             .padding(bottom = 30.dp)
     ) {
         Spacer(Modifier.height(50.dp))
-        PageTitle(AppStrings.TESTIMONIALS)
+        PageTitle(AppStrings.TESTIMONIALS, 300.dp)
         Spacer(Modifier.height(30.dp))
         FlowRow(
             modifier = Modifier.fillMaxWidth(),
@@ -43,8 +46,8 @@ fun Testimonials() {
             verticalArrangement = Arrangement.SpaceBetween,
             maxItemsInEachRow = 4
         ) {
-            ProjectListValues.forEach { model ->
-                ProjectCard(model)
+            ClientReviewValues.forEach {clientReview->
+                ReviewCard(clientReview)
             }
         }
     }

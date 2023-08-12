@@ -25,8 +25,12 @@ fun Projects() {
             .fillMaxWidth()
             .background(
                 Brush.horizontalGradient(
+//                    colors = listOf(
+//                        MaterialTheme.colorScheme.primaryContainer,
+//                        MaterialTheme.colorScheme.errorContainer,
+//                    )
                     colors = listOf(
-                        MaterialTheme.colorScheme.primaryContainer,
+                        MaterialTheme.colorScheme.secondaryContainer,
                         MaterialTheme.colorScheme.errorContainer,
                     )
                 )

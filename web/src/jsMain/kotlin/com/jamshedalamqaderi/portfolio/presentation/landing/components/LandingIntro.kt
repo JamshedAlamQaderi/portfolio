@@ -23,7 +23,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.jamshedalamqaderi.portfolio.ScreenConstraints
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
-import com.jamshedalamqaderi.portfolio.presentation.common.components.Center
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.orEmpty
 import org.jetbrains.compose.resources.rememberImageBitmap
@@ -33,7 +32,7 @@ import org.jetbrains.compose.resources.resource
 @Composable
 fun LandingIntro() {
     val screenSize = ScreenConstraints.size.value
-    val profilePicState = resource("images/my_picture.png").rememberImageBitmap()
+    val profilePicState = resource("images/my_profile_pic.png").rememberImageBitmap()
     Row(
         modifier = Modifier
             .fillMaxWidth()

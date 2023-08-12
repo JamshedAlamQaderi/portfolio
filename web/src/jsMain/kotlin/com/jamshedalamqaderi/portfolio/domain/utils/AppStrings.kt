@@ -10,5 +10,5 @@ object AppStrings {
 
     const val VIEW_DETAILS = "View Details"
     const val PROJECTS = "Projects"
-    const val TESTIMONIALS = "Testimonials"
+    const val TESTIMONIALS = "People say about me"
 }
