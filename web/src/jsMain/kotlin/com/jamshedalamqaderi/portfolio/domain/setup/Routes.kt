@@ -9,7 +9,7 @@ import com.jamshedalamqaderi.portfolio.presentation.project.ProjectScreen
 sealed class NavigationRouter(val path: String, val initial: Boolean = false) : Parcelable {
     data object OnBoarding : NavigationRouter("onboarding", true)
     data object Landing : NavigationRouter("landing")
-    data class Project(val name:String = ""):NavigationRouter("project/{name}")
+    data class Project(val name: String = "circles") : NavigationRouter("project")
 }
 
 val Routes = listOf(
