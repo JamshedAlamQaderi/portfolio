@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 internal val RoundedPortfolioPictureShape = RoundedCornerShape(
@@ -23,7 +24,7 @@ internal val RoundedPortfolioPictureShape = RoundedCornerShape(
 )
 
 @Composable
-fun PortfolioImage(picture: ImageBitmap) {
+fun PortfolioImage(picture: ImageBitmap, imageSize: Dp = 500.dp) {
     Box(
         modifier = Modifier
             .shadow(5.dp, shape = RoundedPortfolioPictureShape)
@@ -41,7 +42,7 @@ fun PortfolioImage(picture: ImageBitmap) {
         Image(
             picture,
             contentDescription = "Landing Intro Profile Image",
-            modifier = Modifier.size(500.dp)
+            modifier = Modifier.size(imageSize)
         )
     }
 }

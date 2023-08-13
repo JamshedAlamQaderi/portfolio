@@ -44,7 +44,7 @@ fun OnBoardingScreen(navigationService: NavigationService = koinInject()) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                val greetingText = animatedTextTying(AppStrings.greeting)
+                val greetingText = animatedTextTying(AppStrings.GREETING)
                 Text(
                     text = greetingText.value,
                     style = MaterialTheme.typography.displayLarge.copy(color = Color.White),

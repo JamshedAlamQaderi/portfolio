@@ -29,7 +29,6 @@ import com.jamshedalamqaderi.portfolio.data.SocialLinkValues
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
 import com.jamshedalamqaderi.portfolio.presentation.common.components.Center
 import com.jamshedalamqaderi.portfolio.presentation.common.components.Margin
-import kotlinx.browser.window
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.orEmpty
 import org.jetbrains.compose.resources.rememberImageBitmap
@@ -68,7 +67,7 @@ fun Contacts() {
                             .shadow(3.dp, shape = CircleShape)
                             .pointerHoverIcon(PointerIcon.Hand)
                             .clickable {
-                                window.open(socialLink.url, target = "_blank")
+                                socialLink.openLink()
                             }
                     ) {
                         Center {
@@ -91,7 +90,8 @@ fun Contacts() {
             horizontalArrangement = Arrangement.Center
         ) {
             Text(
-                "Copyright © 2023, Jamshed Alam Qaderi. All rights reserved.",
+                AppStrings.COPYRIGHTS,
+                style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onTertiary
             )
         }
