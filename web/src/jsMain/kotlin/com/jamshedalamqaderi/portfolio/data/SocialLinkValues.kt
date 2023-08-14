@@ -3,7 +3,7 @@ package com.jamshedalamqaderi.portfolio.data
 import com.jamshedalamqaderi.portfolio.presentation.landing.entities.SocialLink
 
 val linkedinLink = SocialLink("icons/linkedin.png", "https://linkedin.com/in/jamshedalamqaderi")
-val upworkLink = SocialLink("icons/upwork.png", "https://www.upwork.com/freelancers/jamshedalam32")
+val upworkLink = SocialLink("icons/upwork.png", "https://www.upwork.com/freelancers/jamshedalamqaderi")
 
 val SocialLinkValues = listOf(
     SocialLink("icons/github.png", "https://github.com/JamshedAlamQaderi"),

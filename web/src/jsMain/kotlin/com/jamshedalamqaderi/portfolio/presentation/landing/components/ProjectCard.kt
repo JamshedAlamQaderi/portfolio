@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,9 +22,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.PointerIcon
+import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.jamshedalamqaderi.portfolio.domain.services.navigation.NavigationService
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
 import com.jamshedalamqaderi.portfolio.presentation.common.components.Margin
 import com.jamshedalamqaderi.portfolio.presentation.landing.entities.ProjectListItemModel
@@ -33,10 +35,11 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.orEmpty
 import org.jetbrains.compose.resources.rememberImageBitmap
 import org.jetbrains.compose.resources.resource
+import org.koin.compose.koinInject
 
 @OptIn(ExperimentalResourceApi::class, ExperimentalMaterialApi::class, ExperimentalLayoutApi::class)
 @Composable
-fun ProjectCard(model: ProjectListItemModel) {
+fun ProjectCard(model: ProjectListItemModel, navigationService: NavigationService = koinInject()) {
     val profilePicState = resource(model.banner).rememberImageBitmap()
     Margin(Modifier.padding(25.dp)) {
         Card(
@@ -58,7 +61,7 @@ fun ProjectCard(model: ProjectListItemModel) {
             ) {
                 Column {
                     Text(model.title, style = MaterialTheme.typography.headlineLarge, color = Color.Black)
-                    Row (modifier = Modifier.fillMaxWidth()) {
+                    Row(modifier = Modifier.fillMaxWidth()) {
                         model.tags.forEach { tag ->
                             Spacer(Modifier.width(2.dp))
                             Chip(onClick = {}) {
@@ -75,7 +78,12 @@ fun ProjectCard(model: ProjectListItemModel) {
                     Spacer(Modifier.height(5.dp))
                 }
                 Row {
-                    ElevatedButton(onClick = {}) {
+                    ElevatedButton(
+                        onClick = {
+                            navigationService.push(model.link)
+                        },
+                        modifier = Modifier.pointerHoverIcon(PointerIcon.Hand)
+                    ) {
                         Text(AppStrings.VIEW_DETAILS)
                     }
                 }

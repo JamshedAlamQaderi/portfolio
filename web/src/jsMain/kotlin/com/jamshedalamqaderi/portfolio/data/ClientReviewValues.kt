@@ -8,17 +8,44 @@ val ClientReviewValues = listOf(
         "Co-founder",
         "Claps.ai",
         "Madrid, Spain",
-        "images/manu-claps-ai.jpg",
-        "he is a awesome developer with full of skills",
+        "images/manu_claps_ai.jpg",
+        "Really nice job! Will hire again",
         5
     ),
     ClientReview(
-        "Andrew Czuczor",
+        "Andras Czuczor",
         "Founder",
         "Socialdroid.io",
         "Budapest, Hungary",
+        "images/andras_socialdroid.png",
+        "Very satisfied with the work Jamshed has provided. Excellent coding skills and he goes the extra mile. I can only recommend him.",
+        5
+    ),
+    ClientReview(
+        "Jared McKinney",
+        "Owner",
+        "Subfolder",
+        "Cottonwood Heights, United States",
+        "images/jared_five_letter_words.png",
+        "The concept is engaging, the development process was smooth, and the end result is a user-friendly.",
+        5
+    ),
+    ClientReview(
+        "Shivaan Sharma",
+        "Outsourcer",
+        "Upwork",
+        "Pune, India",
         "images/andrew-socialdroid.png",
-        "he is a awesome developer with full of skills",
+        "It's great to work with him.",
+        5
+    ),
+    ClientReview(
+        "Brand Root LTD",
+        "Outsourcer",
+        "Upwork",
+        "Jhang Sadr, Pakistan",
+        "images/andrew-socialdroid.png",
+        "Experienced In Working On Time",
         5
     )
 )

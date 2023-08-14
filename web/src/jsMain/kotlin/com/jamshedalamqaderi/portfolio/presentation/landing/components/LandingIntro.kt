@@ -9,25 +9,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.input.pointer.PointerIcon
-import androidx.compose.ui.input.pointer.pointerHoverIcon
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.jamshedalamqaderi.portfolio.ScreenConstraints
-import com.jamshedalamqaderi.portfolio.data.linkedinLink
-import com.jamshedalamqaderi.portfolio.data.upworkLink
 import com.jamshedalamqaderi.portfolio.domain.utils.AppStrings
+import com.jamshedalamqaderi.portfolio.presentation.common.components.IntroActionButtons
 import com.jamshedalamqaderi.portfolio.presentation.common.components.Responsive
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.LoadState
@@ -213,27 +208,5 @@ fun DesktopIntroText() {
         )
         Spacer(modifier = Modifier.height(20.dp))
         IntroActionButtons()
-    }
-}
-
-@Composable
-fun IntroActionButtons() {
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Button(
-            modifier = Modifier.pointerHoverIcon(PointerIcon.Hand),
-            onClick = { upworkLink.openLink() }
-        ) {
-            Text(text = AppStrings.HIRE_ME, style = MaterialTheme.typography.labelLarge)
-        }
-        Spacer(modifier = Modifier.width(8.dp))
-        OutlinedButton(
-            modifier = Modifier.pointerHoverIcon(PointerIcon.Hand),
-            onClick = { linkedinLink.openLink() }
-        ) {
-            Text(text = AppStrings.LETS_TALK, style = MaterialTheme.typography.labelLarge)
-        }
     }
 }
