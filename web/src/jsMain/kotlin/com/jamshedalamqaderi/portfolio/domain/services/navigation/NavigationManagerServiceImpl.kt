@@ -32,7 +32,7 @@ class NavigationManagerServiceImpl(
     override val stack: Value<ChildStack<*, NavigationRouter>> = _stack
 
     override fun findRouteByNavigationRouter(router: NavigationRouter): Route? {
-        return routeList.find { it.router == router }
+        return routeList.find { it.router.path == router.path }
     }
 
     override fun goBack() {
